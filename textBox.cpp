@@ -5,7 +5,6 @@
  *      Author: odellw
  */
 
-#include <iostream.h>
 #include <textBox.h>
 
 unsigned int hPadAry[] = {
