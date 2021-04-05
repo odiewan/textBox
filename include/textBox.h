@@ -210,6 +210,14 @@ class textBoxObj {
     ILI9341_t3* tboTFT;
     ioChannel* tboIOChanObj;
     tbParam* tboParamObj;
+    String* tboStrPtr;
+    String tboPrefix;
+    String tboStringCore;
+    String tboSuffix;
+    String tboString;
+    String tboStringShadow;
+
+
     int tboDx;
     int tboDy;
     unsigned int tboX;
@@ -217,6 +225,7 @@ class textBoxObj {
     unsigned int tboH;
     unsigned int tboW;
 
+    unsigned int tboEnable;
     unsigned int tboStyle;
     unsigned int tboSize;
     unsigned int tboFontClr;
@@ -224,37 +233,43 @@ class textBoxObj {
     unsigned int tboBoxClr;
     unsigned int tboScreenClr;
 
-    String tboString;
-    String tboStringShadow;
     unsigned int tboPriority;
+    unsigned int tboInputMode;
     unsigned char tboStale;
 
-    textBoxObj(ILI9341_t3* tft, String str, unsigned int x, unsigned int y, sizeType size,
-               unsigned int fontClr, unsigned int boxClr, unsigned int bgClr, unsigned int defClr);
-
-    textBoxObj(ILI9341_t3* tft, tbParam *paramObj, unsigned int x, unsigned int y, sizeType size,
-               unsigned int fontClr, unsigned int boxClr, unsigned int bgClr, unsigned int defClr);
-
-    textBoxObj(ILI9341_t3* tft, ioChannel *ioChanObj, unsigned int x, unsigned int y, sizeType size,
-               unsigned int fontClr, unsigned int boxClr, unsigned int bgClr, unsigned int defClr);
-
-    textBoxObj(ILI9341_t3* tft, String str, unsigned int x, unsigned int y, sizeType size,
+    //---Static String textbox
+    textBoxObj(ILI9341_t3* tft, String nStr, unsigned int x, unsigned int y, sizeType size,
                styleType dispType, unsigned int fontClr, unsigned int bgClr);
 
+    //---String Referance textbox
+    textBoxObj(ILI9341_t3* tft, String *nStr, unsigned int x, unsigned int y, sizeType size,
+               styleType dispType, unsigned int fontClr, unsigned int bgClr);
+
+    //---tbParam textbox with style param
     textBoxObj(ILI9341_t3* tft, tbParam *paramObj, unsigned int x, unsigned int y, sizeType size,
               styleType dispType, unsigned int fontClr, unsigned int bgClr);
 
+    //---ioChan textbox with style param
     textBoxObj(ILI9341_t3* tft, ioChannel *ioChanObj, unsigned int x, unsigned int y, sizeType size,
                styleType dispType, unsigned int fontClr, unsigned int bgClr);
 
-    void tboSetStyle();
-    void tboEraseTB();
+
+    void tboCalcPadding();
     void tboDrawBorder();
     void tboDrawContents();
+    void tboEraseTB();
+    void tboInitDef();
+    void tboGetString();
+    void tboMove(int nX, int nY);
     void tboRedraw();
+    void tboRedraw(String nVal);
     void tboResize();
-    void tboUpdate();
+    void tboSetString(String nPrf, String nStr, String nSuf);
     void tboSetString(String nStr);
+    void tboSetString(int nInt);
+    void tboSetString(float nFlt);
+    void tboSetStyle();
+    void tboUpdate();
 
   private:
     unsigned int tboFillX;
@@ -267,7 +282,6 @@ class textBoxObj {
     unsigned int tboCharCountMin;
     unsigned int tboFixedW;
     unsigned int tboFixedH;
-    unsigned int tboEnable;
     unsigned int tboHPad;
     unsigned int tboWPad;
     unsigned int tboTextX;
