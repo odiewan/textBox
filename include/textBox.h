@@ -14,131 +14,69 @@
 #include <String.h>
 #include <tbParam.h>
 
-#define FILL_LOC_OFFSET 1
+#define FILL_LOC_OFFSET 7
 #define FILL_SIZE_OFFSET 2
+#define FONT_RATIO .714
 
 //---Font is really 5x7, but we pad 1 pxl to both H and W to accommodate char
 //---Spacing
 
 //---Size 1 Font---
-#define FONT_S1_H   8
-#define FONT_S1_W   6
-
-#define S1_TB_H     10
-#define S1_TB_W_PAD 3
-#define S1_TB_H_PAD 1
+#define FONT_S1_H     8
+#define FONT_S1_W     (int16_t)(FONT_S1_H * FONT_RATIO)
+#define S1_TB_H       (int16_t)(FONT_S1_H + 2)
+#define S1_TB_W       (int16_t)(FONT_S1_W + 2)
+#define S1_TB_W_PAD   3
+#define S1_TB_H_PAD   1
 
 //---Size 2 Font---
-#define FONT_S2_H   16
-#define FONT_S2_W   12
-
-#define S2_TB_H     20
-#define S2_TB_W_PAD 5
-#define S2_TB_H_PAD 3
+#define FONT_S2_H     12
+#define FONT_S2_W     (int16_t)(FONT_S2_H * FONT_RATIO)
+#define S2_TB_H       (int16_t)(FONT_S2_H + 4)
+#define S2_TB_W       (int16_t)(FONT_S2_H + 4)
+#define S2_TB_W_PAD   5
+#define S2_TB_H_PAD   2
 
 //---Size 3 Font---
-#define FONT_S3_H   32
-#define FONT_S3_W   18
-
-#define S3_TB_H     27
-#define S3_TB_W_PAD 5
-#define S3_TB_H_PAD 3
+#define FONT_S3_H     18
+#define FONT_S3_W     (int16_t)(FONT_S3_H * FONT_RATIO)
+#define S3_TB_H       (int16_t)(FONT_S3_H + 4)
+#define S3_TB_W       (int16_t)(FONT_S3_W + 4)
+#define S3_TB_W_PAD   6
+#define S3_TB_H_PAD   3
 
 //---Size 4 Font---
-#define FONT_S4_H   FONT_S3_H * 2
-#define FONT_S4_W   FONT_S3_W * 2
-
-#define S4_TB_H     20
-#define S4_TB_W_PAD 5
-#define S4_TB_H_PAD 3
+#define FONT_S4_H     20
+#define FONT_S4_W     (int16_t)(FONT_S4_H * FONT_RATIO)
+#define S4_TB_H       (int16_t)(FONT_S4_H + 5)
+#define S4_TB_W       (int16_t)(FONT_S4_W + 5)
+#define S4_TB_W_PAD   7
+#define S4_TB_H_PAD   3
 
 //---Size 5 Font---
-#define FONT_S5_H   FONT_S4_H * 2
-#define FONT_S5_W   FONT_S4_W * 2
-
-#define S5_TB_H     20
-#define S5_TB_W_PAD 5
-#define S5_TB_H_PAD 3
+#define FONT_S5_H     24
+#define FONT_S5_W     (int16_t)(FONT_S5_H*FONT_RATIO)
+#define S5_TB_H       (int16_t)(FONT_S5_H + 3)
+#define S5_TB_W       (int16_t)(FONT_S5_W + 3)
+#define S5_TB_W_PAD   8
+#define S5_TB_H_PAD   3
 
 //---Size 6 Font---
-#define FONT_S6_H   FONT_S4_H * 2
-#define FONT_S6_W   FONT_S4_W * 2
-
-#define S6_TB_H     20
-#define S6_TB_W_PAD 5
-#define S5_TB_H_PAD 3
+#define FONT_S6_H     30
+#define FONT_S6_W     (int16_t)(FONT_S6_H*FONT_RATIO)
+#define S6_TB_H       (int16_t)(FONT_S6_H + 4)
+#define S6_TB_W       (int16_t)(FONT_S6_W + 4)
+#define S6_TB_W_PAD   9
+#define S6_TB_H_PAD   3
 
 //---Size 7 Font---
-#define FONT_S7_H   FONT_S4_H * 2
-#define FONT_S7_W   FONT_S4_W * 2
+#define FONT_S7_H     35
+#define FONT_S7_W     (int16_t)(FONT_S7_H*FONT_RATIO)
+#define S7_TB_H       (int16_t)(FONT_S4_H + 3)
+#define S7_TB_W       (int16_t)(FONT_S4_W + 3)
+#define S7_TB_W_PAD   10
+#define S7_TB_H_PAD   3
 
-#define S7_TB_H     20
-#define S7_TB_W_PAD 5
-#define S7_TB_H_PAD 3
-
-//---Size 8 Font---
-#define FONT_S8_H   FONT_S4_H * 2
-#define FONT_S8_W   FONT_S4_W * 2
-
-#define S8_TB_H     20
-#define S8_TB_W_PAD 5
-#define S8_TB_H_PAD 3
-
-//---Size 10 Font---
-#define FONT_S9_H   FONT_S4_H * 2
-#define FONT_S9_W   FONT_S4_W * 2
-
-#define S9_TB_H     20
-#define S9_TB_W_PAD 5
-#define S9_TB_H_PAD 3
-
-//---Size 10 Font---
-#define FONT_S10_H   FONT_S4_H * 2
-#define FONT_S10_W   FONT_S4_W * 2
-
-#define S10_TB_H      20
-#define S10_TB_W_PAD  5
-#define S10_TB_H_PAD  3
-
-//---Size 11 Font---
-#define FONT_S11_H   8
-#define FONT_S11_W   6
-
-#define S11_TB_H      20
-#define S11_TB_W_PAD  5
-#define S11_TB_H_PAD  3
-
-//---Size 12 Font---
-#define FONT_S12_H   16
-#define FONT_S12_W   12
-
-#define S12_TB_H      20
-#define S12_TB_W_PAD  5
-#define S12_TB_H_PAD  3
-
-//---Size 13 Font---
-#define FONT_S13_H   FONT_S2_H * 2
-#define FONT_S13_W   FONT_S2_W * 2
-
-#define S13_TB_H      20
-#define S13_TB_W_PAD  5
-#define S13_TB_H_PAD  3
-
-//---Size 14 Font---
-#define FONT_S14_H   FONT_S3_H * 2
-#define FONT_S14_W   FONT_S3_W * 2
-
-#define S14_TB_H      20
-#define S14_TB_W_PAD  5
-#define S14_TB_H_PAD  3
-
-//---Size 15 Font---
-#define FONT_S15_H   105
-#define FONT_S15_W   75
-
-#define S15_TB_H      120
-#define S15_TB_W_PAD  10
-#define S15_TB_H_PAD  7
 
 //ILI9341_BLACK   0x0000
 //ILI9341_BLUE    0x001F  - 31
@@ -216,14 +154,15 @@ class textBoxObj {
     String tboSuffix;
     String tboString;
     String tboStringShadow;
+    String tboErrStr;
+    bool tboForceUpdate;
 
-
-    int tboDx;
-    int tboDy;
-    unsigned int tboX;
-    unsigned int tboY;
-    unsigned int tboH;
-    unsigned int tboW;
+    int16_t tboDx;
+    int16_t tboDy;
+    int16_t tboX;
+    int16_t tboY;
+    int16_t tboH;
+    int16_t tboW;
 
     unsigned int tboEnable;
     unsigned int tboStyle;
@@ -238,21 +177,22 @@ class textBoxObj {
     unsigned char tboStale;
 
     //---Static String textbox
-    textBoxObj(ILI9341_t3* tft, String nStr, unsigned int x, unsigned int y, sizeType size,
+    textBoxObj(ILI9341_t3* tft, String nStr, int16_t x, int16_t y, sizeType size,
                styleType dispType, unsigned int fontClr, unsigned int bgClr);
 
     //---String Referance textbox
-    textBoxObj(ILI9341_t3* tft, String *nStr, unsigned int x, unsigned int y, sizeType size,
+    textBoxObj(ILI9341_t3* tft, String *nStr, int16_t x, int16_t y, sizeType size,
                styleType dispType, unsigned int fontClr, unsigned int bgClr);
 
     //---tbParam textbox with style param
-    textBoxObj(ILI9341_t3* tft, tbParam *paramObj, unsigned int x, unsigned int y, sizeType size,
+    textBoxObj(ILI9341_t3* tft, tbParam *paramObj, int16_t x, int16_t y, sizeType size,
               styleType dispType, unsigned int fontClr, unsigned int bgClr);
 
     //---ioChan textbox with style param
-    textBoxObj(ILI9341_t3* tft, ioChannel *ioChanObj, unsigned int x, unsigned int y, sizeType size,
+    textBoxObj(ILI9341_t3* tft, ioChannel *ioChanObj, int16_t x, int16_t y, sizeType size,
                styleType dispType, unsigned int fontClr, unsigned int bgClr);
 
+    void tboInit();
 
     void tboCalcPadding();
     void tboDrawBorder();
@@ -260,7 +200,7 @@ class textBoxObj {
     void tboEraseTB();
     void tboInitDef();
     void tboGetString();
-    void tboMove(int nX, int nY);
+    void tboMove(int16_t nX, int16_t nY);
     void tboRedraw();
     void tboRedraw(String nVal);
     void tboResize();
@@ -271,22 +211,22 @@ class textBoxObj {
     void tboSetStyle();
     void tboUpdate();
 
+    int16_t tboTextX;
+    int16_t tboTextY;
   private:
-    unsigned int tboFillX;
-    unsigned int tboFillY;
-    unsigned int tboFillH;
-    unsigned int tboFillW;
+    int16_t tboFillX;
+    int16_t tboFillY;
+    int16_t tboFillH;
+    int16_t tboFillW;
     unsigned int tboCharCount;
     unsigned int tboCharCountShadow;
     unsigned int tboCharCountMax;
     unsigned int tboCharCountMin;
-    unsigned int tboFixedW;
-    unsigned int tboFixedH;
-    unsigned int tboHPad;
-    unsigned int tboWPad;
-    unsigned int tboTextX;
-    unsigned int tboTextY;
-    unsigned int tboCharW;
+    int16_t tboFixedW;
+    int16_t tboFixedH;
+    int16_t tboHPad;
+    int16_t tboWPad;
+    int16_t tboCharW;
 
 };
 
