@@ -10,7 +10,6 @@
 
 #include <Arduino.h>
 #include <ILI9341_t3.h>
-#include <ioChan.h>
 #include <String.h>
 #include <tbParam.h>
 
@@ -187,11 +186,7 @@ class textBoxObj {
     //---tbParam textbox with style param
     textBoxObj(ILI9341_t3* tft, tbParam *paramObj, int16_t x, int16_t y, sizeType size,
               styleType dispType, unsigned int fontClr, unsigned int bgClr);
-
-    //---ioChan textbox with style param
-    textBoxObj(ILI9341_t3* tft, ioChannel *ioChanObj, int16_t x, int16_t y, sizeType size,
-               styleType dispType, unsigned int fontClr, unsigned int bgClr);
-
+              
     void tboInit();
 
     void tboCalcPadding();

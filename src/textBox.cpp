@@ -152,30 +152,6 @@ textBoxObj::textBoxObj(ILI9341_t3 *tft, String *nStrPrt, int16_t x, int16_t y, s
   // tft->println("a---08");
 }
 
-/*-----------------------------------------------------------------------------
- *
- *---ioChan textbox
- *
- *---------------------------------------------------------------------------*/
-textBoxObj::textBoxObj(ILI9341_t3 *tft, ioChannel *ioChanObj, int16_t x, int16_t y, sizeType size,
-                       styleType dispType, unsigned int fontClr, unsigned int bgClr) {
-
-  tboInitDef();
-  tboIOChanObj = ioChanObj;
-
-  tboTFT = tft;
-  tboX = x;
-  tboY = y;
-  tboTFT->setCursor(tboX, tboY);
-
-  tboFontClr = fontClr;
-  tboBGClr = bgClr;
-
-  tboGetString();
-
-  tboCalcPadding();
-  tboRedraw();
-}
 
 //-------------------------------------------------------------------------------------------------
 textBoxObj::textBoxObj(ILI9341_t3 *tft, tbParam *paramObj, int16_t x, int16_t y, sizeType size,
